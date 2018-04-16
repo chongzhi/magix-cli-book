@@ -1,8 +1,11 @@
 const { execSync, spawnSync } = require('child_process')
+const config = {
+    stdio: 'inherit'
+}
 
-execSync('gitbook build')
-execSync('git add -A')
-execSync('git commit -m "modify book"')
-execSync('git pull origin master')
-execSync('git push origin master')
-execSync('git checkout gh-pages')
+spawnSync('gitbook', ['build'], config)
+spawnSync('git', ['add', '-A'], config)
+spawnSync('git', ['commit', '-m', '"modify book"'], config)
+spawnSync('git', ['pull', 'origin', 'master'], config)
+spawnSync('git', ['push', 'origin', 'master'], config)
+spawnSync('git', ['checkout', 'gh-pages'], config)
