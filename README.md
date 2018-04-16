@@ -94,6 +94,10 @@ magix3 组件相关命令，同步组件到本地项目中，支持配置多组�
   3. mx gallery -n <组件名> 指定同步某个组件，如果组件被修改过，则给出提示
   4. mx gallery -l 列出本地所有组件的版本信息
 
+#### # `mx chartpark`
+
+同步chartpark平台的图表配置信息到项目中
+
 
 #### # `mx daily`
 
