@@ -12,13 +12,14 @@ const config = {
     stdio: 'inherit'
 }
 
+console.log(`开始发布文档到github pages...`)
+
 spawnSync('gitbook', ['build'], config)
 spawnSync('git', ['add', '-A'], config)
 spawnSync('git', ['commit', '-m', '"modify book"'], config)
 spawnSync('git', ['pull', 'origin', 'master'], config)
 spawnSync('git', ['push', 'origin', 'master'], config)
 spawnSync('git', ['checkout', 'gh-pages'], config)
-
 
 let files = fs.readdirSync(process.cwd())
 const notDeleteFiles = ['.git', '_book', 'test.js', 'node_modules']
@@ -32,3 +33,11 @@ let copyFiles = fs.readdirSync(path.resolve(process.cwd(), './_book'))
 for (const file of copyFiles) {
     fse.copySync(`${process.cwd()}/_book/${file}`, `${process.cwd()}/${file}`)
 }
+
+spawnSync('git', ['add', '-A'], config)
+spawnSync('git', ['commit', '-m', '"publish book"'], config)
+spawnSync('git', ['pull', 'origin', 'gh-pages'], config)
+spawnSync('git', ['push', 'origin', 'gh-pages'], config)
+spawnSync('git', ['checkout', 'master'], config)
+
+console.log('发布完成')
