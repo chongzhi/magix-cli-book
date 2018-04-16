@@ -1,4 +1,4 @@
-const execSync = require('child_process').execSync
+const { execSync, spawnSync } = require('child_process')
 
 execSync('gitbook build')
 execSync('git add -A')
