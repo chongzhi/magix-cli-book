@@ -5,3 +5,4 @@ coverage
 npm-debug.log
 tmp
 _book
+node_modules
