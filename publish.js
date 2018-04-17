@@ -37,7 +37,7 @@ for (const file of copyFiles) {
 
 spawnSync('git', ['add', '-A'], config)
 spawnSync('git', ['commit', '-m', '"publish book"'], config)
-spawnSync('git', ['pull', 'origin', 'gh-pages'], config)
+// spawnSync('git', ['pull', 'origin', 'gh-pages'], config)
 spawnSync('git', ['push', 'origin', 'gh-pages'], config)
 spawnSync('git', ['checkout', 'master'], config)
 
