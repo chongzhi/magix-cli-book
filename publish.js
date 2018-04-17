@@ -14,9 +14,9 @@ const config = {
     stdio: 'inherit'
 }
 
-let ss = spawnSync('ls', config)
-let s = spawnSync('git', ['checkout', 'master'], config)
-console.log(s)
+// let ss = spawnSync('ls', config)
+let ss = spawnSync('git', ['checkout', 'test'], config)
+console.log(ss.status)
 return
 
 /**
