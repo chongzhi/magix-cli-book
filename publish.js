@@ -9,3 +9,5 @@ const gh = require('gitbook-to-gh-pages')
 gh().then(() => {
     console.log(1111)
 })
+
+console.log(222)
