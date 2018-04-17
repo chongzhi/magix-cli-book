@@ -23,13 +23,13 @@ spawnSync('git', ['push', 'origin', 'master'], config)
 spawnSync('git', ['checkout', '-B', 'gh-pages'], config)
 spawnSync('git', ['pull', 'origin', 'gh-pages'], config)
 
-let files = fs.readdirSync(process.cwd())
-const notDeleteFiles = ['.git', '_book', 'node_modules']
-for (const file of files) {
-    if (notDeleteFiles.indexOf(file) === -1) {
-        spawnSync('rm', ['-rf', file])
-    }
-}
+// let files = fs.readdirSync(process.cwd())
+// const notDeleteFiles = ['.git', '_book', 'node_modules']
+// for (const file of files) {
+//     if (notDeleteFiles.indexOf(file) === -1) {
+//         spawnSync('rm', ['-rf', file])
+//     }
+// }
 
 let copyFiles = fs.readdirSync(path.resolve(process.cwd(), './_book'))
 for (const file of copyFiles) {
