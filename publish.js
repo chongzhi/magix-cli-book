@@ -51,7 +51,7 @@ function execCommandReturn(command) {
     spawnSync('git', ['commit', '-m', '"modify book"'], config)
     spawnSync('git', ['pull', 'origin', 'master'], config)
     spawnSync('git', ['push', 'origin', 'master'], config)
-    spawnSync('git', ['checkout', 'gh-pages'], config)
+    spawnSync('git', ['checkout', '-B', 'gh-pages'], config)
 
     // let files = fs.readdirSync(process.cwd())
     // const notDeleteFiles = ['.git', '_book', 'node_modules']
