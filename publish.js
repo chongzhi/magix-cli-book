@@ -14,11 +14,6 @@ const config = {
     stdio: 'inherit'
 }
 
-// let ss = spawnSync('ls', config)
-let ss = spawnSync('git', ['checkout', 'test'], config)
-console.log(ss.status)
-return
-
 /**
   * 执行单个命令并返回结果字符串
   */
@@ -56,16 +51,20 @@ function execCommandReturn(command) {
     spawnSync('git', ['commit', '-m', '"modify book"'], config)
     spawnSync('git', ['pull', 'origin', 'master'], config)
     spawnSync('git', ['push', 'origin', 'master'], config)
-    spawnSync('git', ['checkout', 'gh-pages'], config)
-    spawnSync('git', ['pull', 'origin', 'gh-pages'], config)
 
-    // let files = fs.readdirSync(process.cwd())
-    // const notDeleteFiles = ['.git', '_book', 'node_modules']
-    // for (const file of files) {
-    //     if (notDeleteFiles.indexOf(file) === -1) {
-    //         spawnSync('rm', ['-rf', file])
-    //     }
-    // }
+    //切换到gh-pages，首次则创建gh-pages分支
+    let rs = spawnSync('git', ['checkout', 'gh-pages'], config)
+    if (rs.status === 1) {
+        spawnSync('git', ['checkout', '-b', 'gh-pages'], config)
+    }
+
+    let files = fs.readdirSync(process.cwd())
+    const notDeleteFiles = ['.git', '_book', 'node_modules']
+    for (const file of files) {
+        if (notDeleteFiles.indexOf(file) === -1) {
+            spawnSync('rm', ['-rf', file])
+        }
+    }
 
     let copyFiles = fs.readdirSync(path.resolve(process.cwd(), './_book'))
     for (const file of copyFiles) {
@@ -74,6 +73,7 @@ function execCommandReturn(command) {
 
     spawnSync('git', ['add', '-A'], config)
     spawnSync('git', ['commit', '-m', '"publish book"'], config)
+    spawnSync('git', ['pull', 'origin', 'gh-pages'], config)
     spawnSync('git', ['push', 'origin', 'gh-pages'], config)
     spawnSync('git', ['checkout', 'master'], config)
 
