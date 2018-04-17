@@ -4,10 +4,4 @@
  * gh-pages存的是编译后的文档，对接github pages
  * 执行 node build 会自动提交master代码并切换到gh-pages分支，删除旧文件，从_book里复制新编译的文件到根目录下
  */
-const gh = require('gitbook-to-gh-pages')
-
-gh().then(() => {
-    console.log(1111)
-})
-
-console.log(222)
+require('gitbook-to-gh-pages')()
