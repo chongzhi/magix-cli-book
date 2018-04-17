@@ -6,4 +6,6 @@
  */
 const gh = require('gitbook-to-gh-pages')
 
-gh()
+gh().then(() => {
+    console.log(1111)
+})
