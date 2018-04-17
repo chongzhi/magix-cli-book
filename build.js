@@ -8,11 +8,12 @@ const { execSync, spawnSync } = require('child_process')
 const path = require('path')
 const fs = require('fs')
 const fse = require('fs-extra')
+const chalk = require('chalk')
 const config = {
     stdio: 'inherit'
 }
 
-console.log(`\n开始发布文档到github pages...`)
+console.log(chalk.cyan(`\n开始发布文档到github pages...`))
 
 spawnSync('gitbook', ['build'], config)
 spawnSync('git', ['add', '-A'], config)
@@ -24,7 +25,7 @@ spawnSync('git', ['checkout', 'gh-pages'], config)
 let files = fs.readdirSync(process.cwd())
 const notDeleteFiles = ['.git', '_book', 'node_modules']
 for (const file of files) {
-    if (notDeleteFiles.indexOf(file) === -1)  {
+    if (notDeleteFiles.indexOf(file) === -1) {
         spawnSync('rm', ['-rf', file])
     }
 }
@@ -40,4 +41,4 @@ spawnSync('git', ['pull', 'origin', 'gh-pages'], config)
 spawnSync('git', ['push', 'origin', 'gh-pages'], config)
 spawnSync('git', ['checkout', 'master'], config)
 
-console.log('√ 发布完成 \n')
+console.log(chalk.green('√ 发布完成 \n'))

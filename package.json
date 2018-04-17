@@ -3,6 +3,7 @@
     "version": "0.0.1",
     "author": "chongzhi",
     "dependencies": {
-        "fs-extra": "^0.30.0"
+        "fs-extra": "^0.30.0",
+        "chalk": "^1.1.3"
     }
 }
