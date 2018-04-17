@@ -14,6 +14,11 @@ const config = {
     stdio: 'inherit'
 }
 
+let ss = spawnSync('ls', config)
+let s = spawnSync('git', ['checkout', 'master'], config)
+console.log(s)
+return
+
 /**
   * 执行单个命令并返回结果字符串
   */
@@ -46,7 +51,6 @@ function execCommandReturn(command) {
 
     console.log(chalk.green(`\nⓘ 开始发布文档到github pages...`))
 
-    spawnSync('npm', ['i'], config)
     spawnSync('gitbook', ['build'], config)
     spawnSync('git', ['add', '-A'], config)
     spawnSync('git', ['commit', '-m', '"modify book"'], config)
