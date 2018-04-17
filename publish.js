@@ -46,6 +46,7 @@ function execCommandReturn(command) {
 
     console.log(chalk.green(`\nⓘ 开始发布文档到github pages...`))
 
+    spawnSync('npm', ['i'], config)
     spawnSync('gitbook', ['build'], config)
     spawnSync('git', ['add', '-A'], config)
     spawnSync('git', ['commit', '-m', '"modify book"'], config)
