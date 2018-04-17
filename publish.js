@@ -13,7 +13,7 @@ const config = {
     stdio: 'inherit'
 }
 
-console.log(chalk.cyan(`\n开始发布文档到github pages...`))
+console.log(chalk.green(`\n开始发布文档到github pages...`))
 
 spawnSync('gitbook', ['build'], config)
 spawnSync('git', ['add', '-A'], config)
