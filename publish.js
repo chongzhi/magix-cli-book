@@ -15,7 +15,7 @@ const config = {
 }
 
 // let ss = spawnSync('ls', config)
-let ss = spawnSync('git', ['checkout', '444'], config)
+let ss = spawnSync('git', ['checkout', 'test'], config)
 console.log(ss.status)
 return
 
